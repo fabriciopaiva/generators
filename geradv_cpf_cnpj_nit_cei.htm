@@ -1,0 +1,158 @@
+<html><head><title>Gerador de DV CPF, CNPJ, NIT e CEI </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+// Desenvolvido por Fabrício Paiva (fabricio.paiva@dataprev.gov.br)
+// Função para gerar números randômicos
+function gera_random(n) {
+    var ranNum = Math.round(Math.random()*n);
+    return ranNum;
+}
+
+// Função para retornar o resto da divisao entre números (mod)
+function mod(dividendo,divisor) {
+	return Math.round(dividendo - (Math.floor(dividendo/divisor)*divisor));
+}
+
+// Função que gera números de CPF válidos
+function cpf() {
+	var n = 9;
+	var num = document.form1.numero.value;
+	var n1 = (isNaN(num[0])) ? gera_random(n) : num[0];
+ 	var n2 = (isNaN(num[1])) ? gera_random(n) : num[1];
+ 	var n3 = (isNaN(num[2])) ? gera_random(n) : num[2];
+ 	var n4 = (isNaN(num[3])) ? gera_random(n) : num[3];
+ 	var n5 = (isNaN(num[4])) ? gera_random(n) : num[4];
+ 	var n6 = (isNaN(num[5])) ? gera_random(n) : num[5];
+ 	var n7 = (isNaN(num[6])) ? gera_random(n) : num[6];
+ 	var n8 = (isNaN(num[7])) ? gera_random(n) : num[7];
+ 	var n9 = (isNaN(num[8])) ? gera_random(n) : num[8];
+ 	var d1 = n9*2+n8*3+n7*4+n6*5+n5*6+n4*7+n3*8+n2*9+n1*10;
+ 	d1 = 11 - ( mod(d1,11) );
+ 	if (d1>=10) d1 = 0;
+ 	var d2 = d1*2+n9*3+n8*4+n7*5+n6*6+n5*7+n4*8+n3*9+n2*10+n1*11;
+ 	d2 = 11 - ( mod(d2,11) );
+ 	if (d2>=10) d2 = 0;
+	
+	if (document.form1.mascara.checked)
+ 	  return ''+n1+n2+n3+'.'+n4+n5+n6+'.'+n7+n8+n9+'-'+d1+d2;
+	else
+	  return ''+n1+n2+n3+n4+n5+n6+n7+n8+n9+d1+d2;
+}
+
+// Função que gera números de CNPJ válidos
+function cnpj() {
+	var n = 9;
+	var num = document.form1.numero.value;
+	var n1  = (isNaN(num[0])) ? gera_random(n) : num[0];
+ 	var n2  = (isNaN(num[1])) ? gera_random(n) : num[1];
+ 	var n3  = (isNaN(num[2])) ? gera_random(n) : num[2];
+ 	var n4  = (isNaN(num[3])) ? gera_random(n) : num[3];
+ 	var n5  = (isNaN(num[4])) ? gera_random(n) : num[4];
+ 	var n6  = (isNaN(num[5])) ? gera_random(n) : num[5];
+ 	var n7  = (isNaN(num[6])) ? gera_random(n) : num[6];
+ 	var n8  = (isNaN(num[7])) ? gera_random(n) : num[7];
+ 	var n9  = (isNaN(num[8])) ? 0 : num[8];
+ 	var n10 = (isNaN(num[9])) ? 0 : num[9];
+ 	var n11 = (isNaN(num[10]))? 0 : num[10];
+ 	var n12 = (isNaN(num[11]))? 1 : num[11];
+	var d1 = n12*2+n11*3+n10*4+n9*5+n8*6+n7*7+n6*8+n5*9+n4*2+n3*3+n2*4+n1*5;
+ 	d1 = 11 - ( mod(d1,11) );
+ 	if (d1>=10) d1 = 0;
+ 	var d2 = d1*2+n12*3+n11*4+n10*5+n9*6+n8*7+n7*8+n6*9+n5*2+n4*3+n3*4+n2*5+n1*6;
+ 	d2 = 11 - ( mod(d2,11) );
+ 	if (d2>=10) d2 = 0;
+	
+	if (document.form1.mascara.checked)
+ 	  return ''+n1+n2+'.'+n3+n4+n5+'.'+n6+n7+n8+'/'+n9+n10+n11+n12+'-'+d1+d2;
+	else
+	  return ''+n1+n2+n3+n4+n5+n6+n7+n8+n9+n10+n11+n12+d1+d2;
+}
+
+// Função que gera números de NIT válidos
+function nit() {
+	var n = 9;
+	var num = document.form1.numero.value;
+	var n1  = (isNaN(num[0])) ? 1 : num[0];
+ 	var n2  = (isNaN(num[1])) ? 2 : num[1];
+ 	var n3  = (isNaN(num[2])) ? 7 : num[2];
+ 	var n4  = (isNaN(num[3])) ? gera_random(n) : num[3];
+ 	var n5  = (isNaN(num[4])) ? gera_random(n) : num[4];
+ 	var n6  = (isNaN(num[5])) ? gera_random(n) : num[5];
+ 	var n7  = (isNaN(num[6])) ? gera_random(n) : num[6];
+ 	var n8  = (isNaN(num[7])) ? gera_random(n) : num[7];
+ 	var n9  = (isNaN(num[8])) ? gera_random(n) : num[8];
+ 	var n10 = (isNaN(num[9])) ? gera_random(n) : num[9];
+		
+	var d1 =  n1*3 + n2*2 + n3*9 + n4*8 + n5*7 + n6*6 + n7*5 + n8*4 + n9*3 + n10*2;
+ 	d1 = 11 - ( mod(d1,11) );
+ 	if (d1>=10) d1 = 0;
+ 	
+	if (document.form1.mascara.checked)
+ 	  return ''+n1+n2+n3+'.'+n4+n5+n6+n7+n8+'.'+n9+n10+'-'+d1;
+	else
+	  return ''+n1+n2+n3+n4+n5+n6+n7+n8+n9+n10+d1;
+}
+
+// Função que gera números de CEI válidos
+function cei() {
+	var n = 9;
+	var num = document.form1.numero.value;
+	//ex.: 218794069487
+	var n1  = (isNaN(num[0])) ? 2 : num[0]; // deve ser diferente de 0
+ 	var n2  = (isNaN(num[1])) ? gera_random(n) : num[1];
+ 	var n3  = (isNaN(num[2])) ? gera_random(n) : num[2];
+ 	var n4  = (isNaN(num[3])) ? gera_random(n) : num[3];
+ 	var n5  = (isNaN(num[4])) ? gera_random(n) : num[4];
+ 	var n6  = (isNaN(num[5])) ? gera_random(n) : num[5];
+ 	var n7  = (isNaN(num[6])) ? gera_random(n) : num[6];
+ 	var n8  = (isNaN(num[7])) ? gera_random(n) : num[7];
+ 	var n9  = (isNaN(num[8])) ? gera_random(n) : num[8];
+ 	var n10 = (isNaN(num[9])) ? gera_random(n) : num[9];
+	var n11 = 8;   // Atividade 
+	
+	var aux1 =  n1*7 + n2*4 + n3*1 + n4*8 + n5*5 + n6*2 + n7*1 + n8*6 + n9*3 + n10*7 + n11 * 4;
+	var aux2 = aux1 + '';
+	var aux3 = parseInt(aux2[aux2.length - 1]) + parseInt(aux2[aux2.length - 2]);
+	var Soma = parseInt(aux1);	
+	var d1 = parseInt((10 - (Soma % 10 + parseInt(Soma / 10)) % 10) % 10);
+	d1 = Math.abs(d1);
+
+	if (document.form1.mascara.checked)
+ 	  return ''+n1+n2+'.'+n3+n4+n5+'.'+n6+n7+n8+n9+n10+'/'+n11+d1;
+	else
+	  return ''+n1+n2+n3+n4+n5+n6+n7+n8+n9+n10+n11+d1;
+}
+
+// Função para escolher qual função chamar de acordo com a chamada
+function faz() {
+	if (document.form1.tipo[0].checked)
+		document.form1.numero.value = cpf();
+	else if (document.form1.tipo[1].checked)
+		document.form1.numero.value = cnpj();
+	else if (document.form1.tipo[2].checked)
+		document.form1.numero.value = nit();
+        else if (document.form1.tipo[3].checked)
+		document.form1.numero.value = cei();
+}
+// FIM
+</script></head><body>
+<form name="form1" method="post" action="">
+  <table align="center" border="0" cellpadding="0" cellspacing="2" width="320">
+    <tbody><tr align="center">
+      <td colspan="2" bgcolor="#6699aa"><font color="#ffffff" face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong>Gerador 
+        de DV CPF, CNPJ, NIT e CEI</strong></font></td>
+    </tr>
+    <tr><td colspan="2" align="center" bgcolor="#eeeeee"><input name="numero" id="numero" size="20" type="text"></td></tr>
+    <tr> 
+      <td align="center" bgcolor="#eeeeee" width="200"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+        <input name="tipo" value="cpf" checked="checked" type="radio">CPF 
+        <input name="tipo" value="cnpj" type="radio">CNPJ 
+       <input name="tipo" value="nit" type="radio">NIT	
+       <input name="tipo" value="cei" type="radio">CEI	
+	</font></td>
+      <td align="center" bgcolor="#eeeeee" width="81"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><input name="mascara" value="mascara" type="checkbox">Máscara</font></td>
+    </tr>
+    <tr><td align="center" bgcolor="#eeeeee" width="81" colspan="2"><input name="Button" value="Gerar" onclick="faz()" type="button"></td></tr>
+  </tbody></table>
+</form>
+</body></html>
